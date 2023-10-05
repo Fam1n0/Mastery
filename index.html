@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Generator by ChatGPT</title>
+    <script>
+        function generateArt() {
+            let canvas = document.getElementById("artCanvas");
+            let ctx = canvas.getContext("2d");
+            
+            let colors = ["#FF5733", "#33FF57", "#5733FF", "#FF33B8", "#33FFEB"];
+            let patterns = [ctx.createRadialGradient(250, 250, 5, 250, 250, 300), ctx.createLinearGradient(0, 0, 500, 500)];
+
+            for (let i = 0; i < patterns.length; i++) {
+                patterns[i].addColorStop(0, colors[Math.floor(Math.random() * colors.length)]);
+                patterns[i].addColorStop(1, colors[Math.floor(Math.random() * colors.length)]);
+            }
+            
+            ctx.fillStyle = patterns[Math.floor(Math.random() * patterns.length)];
+            ctx.fillRect(0, 0, 500, 500);
+        }
+    </script>
+</head>
+<body onload="generateArt()">
+    <canvas id="artCanvas" width="500" height="500"></canvas>
+</body>
+</html>
